@@ -69,6 +69,9 @@ module.exports = {
       async DeleteService(name) {
         return await axios.post(`/api/service/${user.username}/delete`, { name })
       },
+      async ListServices() {
+        return await axios.get(`/api/service/${user.username}/list`)
+      },
     }
   },
 }
