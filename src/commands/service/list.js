@@ -10,7 +10,7 @@ class ListCommand extends Command {
     cli.table(services.data, {
       Name: {
         minWidth: 5,
-        get: (row) => chalk.cyanBright(row.instances.name),
+        get: (row) => chalk.cyanBright(row.name),
       },
       On: {
         get: (row) => chalk.greenBright(row.instances.ready),
