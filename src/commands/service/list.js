@@ -8,8 +8,9 @@ class ListCommand extends Command {
     const jekyoClient = util.Client(this.config.dataDir)
     const services = await jekyoClient.ListServices()
     cli.table(services.data, {
-      name: {
+      Name: {
         minWidth: 5,
+        get: (row) => chalk.cyanBright(row.instances.name),
       },
       On: {
         get: (row) => chalk.greenBright(row.instances.ready),

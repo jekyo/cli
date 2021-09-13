@@ -75,6 +75,9 @@ module.exports = {
       async LogsService(service) {
         return await axios.get(`/api/service/${user.username}/${service}/logs`)
       },
+      async StatusService(service) {
+        return await axios.get(`/api/service/${user.username}/${service}/status`)
+      },
     }
   },
 }
