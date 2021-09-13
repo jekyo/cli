@@ -6,7 +6,12 @@ module.exports = {
     if (err.response) {
       switch (err.response.status) {
         case 422:
-          logger(err.response.data.message)
+          if (err.response.data.errors) {
+            const firstError = Object.keys(err.response.data.errors)[0]
+            logger(err.response.data.errors[firstError])
+          } else {
+            logger(err.response.data.message)
+          }
           break
         case 503:
           logger(`${err.response.data.message}, please try again later`)
@@ -15,7 +20,7 @@ module.exports = {
           logger(`unhandled status ${err.response.status}, ${JSON.stringify(err.response.data)}`)
       }
     } else {
-      logger("We're experiencing some issues right now, please try again later!")
+      logger(err)
     }
   },
 
@@ -41,6 +46,12 @@ module.exports = {
         configStore.set("token", result.data.token)
         configStore.set("user", user)
         return result
+      },
+      async Recover(email) {
+        return await axios.post("/api/user/recover", { email })
+      },
+      async ChangePassword(request) {
+        return await axios.post("/api/user/changePassword", request)
       },
     }
   },

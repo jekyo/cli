@@ -9,13 +9,12 @@ class SigninCommand extends Command {
       email: flags.email || (await cli.prompt("Your email?", { type: "mask" })),
       password: flags.password || (await cli.prompt("Your password?", { type: "hide" })),
     }
-    try {
-      const jekyoClient = util.Client(this.config.dataDir)
-      const result = await jekyoClient.SignIn(user)
-      this.log(result.data.message)
-    } catch (err) {
-      util.ErrorHandler(this.error, err)
-    }
+    const jekyoClient = util.Client(this.config.dataDir)
+    const result = await jekyoClient.SignIn(user)
+    this.log(result.data.message)
+  }
+  async catch(error) {
+    util.ErrorHandler(this.error, error)
   }
 }
 

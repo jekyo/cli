@@ -16,15 +16,14 @@ class SignupCommand extends Command {
     if (user.password != user.passwordConfirmation) {
       this.error("Your passwords do not match!")
     } else {
-      try {
-        const jekyoClient = util.Client(this.config.dataDir)
-        const result = await jekyoClient.SignUp(user)
-        this.log(result.data.message)
-        await ConfirmCommand.run([])
-      } catch (err) {
-        util.ErrorHandler(this.error, err)
-      }
+      const jekyoClient = util.Client(this.config.dataDir)
+      const result = await jekyoClient.SignUp(user)
+      this.log(result.data.message)
+      await ConfirmCommand.run([])
     }
+  }
+  async catch(error) {
+    util.ErrorHandler(this.error, error)
   }
 }
 
