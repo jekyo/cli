@@ -169,9 +169,6 @@ Lists all the services that a user has created on jekyo
 ```
 USAGE
   $ jekyo service:list
-
-OPTIONS
-  -n, --name=name  name to print
 ```
 
 _See code: [src/commands/service/list.js](https://github.com/jekyo/cli/blob/v0.0.10/src/commands/service/list.js)_
