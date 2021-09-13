@@ -19,7 +19,7 @@ $ npm install -g jekyo
 $ jekyo COMMAND
 running command...
 $ jekyo (-v|--version|version)
-jekyo/0.0.5 linux-x64 node-v14.17.5
+jekyo/0.0.6 linux-x64 node-v14.17.5
 $ jekyo --help [COMMAND]
 USAGE
   $ jekyo COMMAND
@@ -29,7 +29,6 @@ USAGE
 # Commands
 <!-- commands -->
 * [`jekyo deploy`](#jekyo-deploy)
-* [`jekyo hello`](#jekyo-hello)
 * [`jekyo help [COMMAND]`](#jekyo-help-command)
 * [`jekyo login`](#jekyo-login)
 * [`jekyo logs`](#jekyo-logs)
@@ -62,25 +61,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/deploy.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/deploy.js)_
-
-## `jekyo hello`
-
-Describe the command here
-
-```
-USAGE
-  $ jekyo hello
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/hello.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/hello.js)_
+_See code: [src/commands/deploy.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/deploy.js)_
 
 ## `jekyo help [COMMAND]`
 
@@ -115,7 +96,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/login.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/login.js)_
+_See code: [src/commands/login.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/login.js)_
 
 ## `jekyo logs`
 
@@ -133,7 +114,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/logs.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/logs.js)_
+_See code: [src/commands/logs.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/logs.js)_
 
 ## `jekyo service`
 
@@ -151,25 +132,21 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/service.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/service.js)_
+_See code: [src/commands/service.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/service.js)_
 
 ## `jekyo service:create`
 
-Describe the command here
+Creates a new service that can be deployed on jekyo
 
 ```
 USAGE
   $ jekyo service:create
 
 OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
+  -n, --name=name  jekyo service name
 ```
 
-_See code: [src/commands/service/create.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/service/create.js)_
+_See code: [src/commands/service/create.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/service/create.js)_
 
 ## `jekyo service:delete`
 
@@ -187,7 +164,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/service/delete.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/service/delete.js)_
+_See code: [src/commands/service/delete.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/service/delete.js)_
 
 ## `jekyo service:list`
 
@@ -205,7 +182,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/service/list.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/service/list.js)_
+_See code: [src/commands/service/list.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/service/list.js)_
 
 ## `jekyo service:logs`
 
@@ -223,7 +200,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/service/logs.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/service/logs.js)_
+_See code: [src/commands/service/logs.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/service/logs.js)_
 
 ## `jekyo service:status`
 
@@ -241,7 +218,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/service/status.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/service/status.js)_
+_See code: [src/commands/service/status.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/service/status.js)_
 
 ## `jekyo status`
 
@@ -259,7 +236,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/status.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/status.js)_
+_See code: [src/commands/status.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/status.js)_
 
 ## `jekyo user`
 
@@ -277,7 +254,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/user.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/user.js)_
+_See code: [src/commands/user.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/user.js)_
 
 ## `jekyo user:confirm`
 
@@ -291,7 +268,7 @@ OPTIONS
   -t, --token=token  Account confirmation token
 ```
 
-_See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/user/confirm.js)_
+_See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/user/confirm.js)_
 
 ## `jekyo user:recover`
 
@@ -305,7 +282,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/user/recover.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/user/recover.js)_
+_See code: [src/commands/user/recover.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/user/recover.js)_
 
 ## `jekyo user:signin`
 
@@ -320,7 +297,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/user/signin.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/user/signin.js)_
+_See code: [src/commands/user/signin.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/user/signin.js)_
 
 ## `jekyo user:signup`
 
@@ -337,5 +314,5 @@ OPTIONS
   -u, --username=username  your desired username
 ```
 
-_See code: [src/commands/user/signup.js](https://github.com/jekyo/cli/blob/v0.0.5/src/commands/user/signup.js)_
+_See code: [src/commands/user/signup.js](https://github.com/jekyo/cli/blob/v0.0.6/src/commands/user/signup.js)_
 <!-- commandsstop -->
