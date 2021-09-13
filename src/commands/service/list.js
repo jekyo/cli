@@ -33,8 +33,4 @@ class ListCommand extends Command {
 
 ListCommand.description = "Lists all the services that a user has created on jekyo"
 
-ListCommand.flags = {
-  name: flags.string({ char: "n", description: "name to print" }),
-}
-
 module.exports = ListCommand
