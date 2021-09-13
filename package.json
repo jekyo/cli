@@ -57,6 +57,7 @@
   },
   "repository": "jekyo/cli",
   "scripts": {
+    "publish": "oclif-dev readme&&npm version patch",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
