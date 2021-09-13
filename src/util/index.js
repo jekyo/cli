@@ -1,7 +1,5 @@
 const axios = require("axios").default
-const BASE_URL = "http://localhost:8000"
-const fs = require("fs")
-
+const JSONStore = require("json-store")
 module.exports = {
   ErrorHandler(logger, err) {
     if (err.response) {
@@ -21,13 +19,22 @@ module.exports = {
   },
 
   Client(config) {
+    const configStore = JSONStore(`${config}/config.json`)
     axios.defaults.baseURL = "http://localhost:8000"
+    const token = configStore.get("token")
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = token
+    }
     return {
       async SignUp(user) {
         return await axios.post("/api/user/signup", user)
       },
       async Confirm(token) {
         return await axios.post("/api/user/confirm", { token })
+      },
+      async SignIn(user) {
+        const result = await axios.post("api/user/signin", user)
+        return result
       },
     }
   },

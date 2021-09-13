@@ -1,12 +1,12 @@
-@jekyo/cli
+jekyo
 ==========
 
 JEKYO | Decentralized application platform
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@jekyo/cli.svg)](https://npmjs.org/package/@jekyo/cli)
-[![Downloads/week](https://img.shields.io/npm/dw/@jekyo/cli.svg)](https://npmjs.org/package/@jekyo/cli)
-[![License](https://img.shields.io/npm/l/@jekyo/cli.svg)](https://github.com/jekyo/cli/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/jekyo.svg)](https://npmjs.org/package/jekyo)
+[![Downloads/week](https://img.shields.io/npm/dw/jekyo.svg)](https://npmjs.org/package/jekyo)
+[![License](https://img.shields.io/npm/l/jekyo.svg)](https://github.com/jekyo/cli/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -15,11 +15,11 @@ JEKYO | Decentralized application platform
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g @jekyo/cli
+$ npm install -g jekyo
 $ jekyo COMMAND
 running command...
 $ jekyo (-v|--version|version)
-@jekyo/cli/0.0.1 linux-x64 node-v14.17.5
+jekyo/0.0.1 linux-x64 node-v14.17.5
 $ jekyo --help [COMMAND]
 USAGE
   $ jekyo COMMAND
@@ -281,18 +281,14 @@ _See code: [src/commands/user.js](https://github.com/jekyo/cli/blob/v0.0.1/src/c
 
 ## `jekyo user:confirm`
 
-Describe the command here
+Confirms the email of a jekyo account
 
 ```
 USAGE
   $ jekyo user:confirm
 
 OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
+  -t, --token=token  Account confirmation token
 ```
 
 _See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.0.1/src/commands/user/confirm.js)_

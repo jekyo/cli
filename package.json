@@ -1,5 +1,5 @@
 {
-  "name": "@jekyo/cli",
+  "name": "jekyo",
   "description": "JEKYO | Decentralized application platform",
   "version": "0.0.1",
   "author": "Vali Malinoiu @0x4139",
@@ -11,9 +11,13 @@
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.3",
-    "axios": "^0.21.4"
+    "axios": "^0.21.4",
+    "cli-ux": "^5.6.3",
+    "json-store": "^1.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "husky": "^6.0.0",
     "@oclif/dev-cli": "^1.26.0",
     "eslint-config-oclif": "^3.1.0",
@@ -36,7 +40,7 @@
   ],
   "homepage": "https://github.com/jekyo/cli",
   "keywords": [
-    "oclif"
+    "jekyo, app platform, decentralized app platform, 0x4139"
   ],
   "license": "JEKYO LTD",
   "main": "src/index.js",
