@@ -1,0 +1,59 @@
+{
+  "name": "@jekyo/cli",
+  "description": "JEKYO | Decentralized application platform",
+  "version": "0.0.1",
+  "author": "Vali Malinoiu @0x4139",
+  "bin": {
+    "jekyo": "./bin/run"
+  },
+  "bugs": "https://github.com/jekyo/cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.3",
+    "axios": "^0.21.4"
+  },
+  "devDependencies": {
+    "husky": "^6.0.0",
+    "@oclif/dev-cli": "^1.26.0",
+    "eslint-config-oclif": "^3.1.0",
+    "@babel/eslint-parser": "^7.14.7",
+    "globby": "^10.0.2",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.12.1",
+    "prettier": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/jekyo/cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "JEKYO LTD",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "jekyo",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "jekyo/cli",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md",
+    "prepare": "husky install"
+  }
+}
