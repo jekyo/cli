@@ -5,6 +5,12 @@ module.exports = {
   ErrorHandler(logger, err) {
     if (err.response) {
       switch (err.response.status) {
+        case 404:
+          logger(err.message)
+          break
+        case 401:
+          logger("Session expired: please signin !")
+          break
         case 422:
           if (err.response.data.errors) {
             const firstError = Object.keys(err.response.data.errors)[0]
@@ -31,6 +37,7 @@ module.exports = {
     const configStore = JSONStore(`${config}/config.json`)
     axios.defaults.baseURL = "http://localhost:8000"
     const token = configStore.get("token")
+    const user = configStore.get("user")
     if (token) {
       axios.defaults.headers.common["Authorization"] = token
     }
@@ -43,8 +50,11 @@ module.exports = {
       },
       async SignIn(user) {
         const result = await axios.post("api/user/signin", user)
-        configStore.set("token", result.data.token)
-        configStore.set("user", user)
+        configStore.set("token", `Bearer ${result.data.token}`)
+        configStore.set("credentials", user)
+        axios.defaults.headers.common["Authorization"] = token
+        const me = await axios.post("api/user/me", { token: result.data.token })
+        configStore.set("user", me.data)
         return result
       },
       async Recover(email) {
@@ -52,6 +62,9 @@ module.exports = {
       },
       async ChangePassword(request) {
         return await axios.post("/api/user/changePassword", request)
+      },
+      async CreateService(name) {
+        return await axios.post(`/api/service/${user.username}/create`, { name })
       },
     }
   },
