@@ -1,20 +1,21 @@
-const {Command, flags} = require('@oclif/command')
-
+const { Command, flags } = require("@oclif/command")
+const Login = require("./user/signin")
 class LoginCommand extends Command {
   async run() {
-    const {flags} = this.parse(LoginCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from /volumes/code/jekyo-cli/src/commands/login.js`)
+    const { flags } = this.parse(LoginCommand)
+    if (flags.email && flags.password) {
+      await Login.run(["-e", flags.email, "-p", flags.password])
+    } else {
+      await Login.run([])
+    }
   }
 }
 
-LoginCommand.description = `Describe the command here
-...
-Extra documentation goes here
-`
+LoginCommand.description = "Sign in an existing jekyo user"
 
 LoginCommand.flags = {
-  name: flags.string({char: 'n', description: 'name to print'}),
+  password: flags.string({ char: "p", description: "jekyo account password", required: false }),
+  email: flags.string({ char: "e", description: "jekyo account email", required: false }),
 }
 
 module.exports = LoginCommand

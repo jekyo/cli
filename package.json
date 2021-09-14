@@ -54,7 +54,15 @@
     "bin": "jekyo",
     "plugins": [
       "@oclif/plugin-help"
-    ]
+    ],
+    "topics": {
+      "service": {
+        "description": "Manage your services: use `jekyo service --help` for additional information"
+      },
+      "user": {
+        "description": "Manage your user: use `jekyo user --help` for additional information"
+      }
+    }
   },
   "repository": "jekyo/cli",
   "scripts": {
