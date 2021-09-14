@@ -1,6 +1,9 @@
 const axios = require("axios").default
 const JSONStore = require("json-store")
+const git = require("isomorphic-git")
+const githttp = require("isomorphic-git/http/node")
 const fs = require("fs")
+const BaseUrl = "http://localhost:8000"
 module.exports = {
   ErrorHandler(logger, err) {
     if (err.response) {
@@ -35,7 +38,7 @@ module.exports = {
       fs.mkdirSync(config, { recursive: true })
     }
     const configStore = JSONStore(`${config}/config.json`)
-    axios.defaults.baseURL = "http://localhost:8000"
+    axios.defaults.baseURL = BaseUrl
     const token = configStore.get("token")
     const user = configStore.get("user")
     if (token) {
@@ -77,6 +80,38 @@ module.exports = {
       },
       async StatusService(service) {
         return await axios.get(`/api/service/${user.username}/${service}/status`)
+      },
+    }
+  },
+  Git(config) {
+    const configStore = JSONStore(`${config}/config.json`)
+    const credentials = configStore.get("credentials")
+    return {
+      async Remote() {
+        let remotes = await git.listRemotes({ fs, dir: process.cwd() })
+        return remotes.filter((remote) => remote.remote === "jekyo")[0]
+      },
+      async CreateRemote(repository) {
+        return await git.addRemote({
+          fs,
+          dir: process.cwd(),
+          remote: "jekyo",
+          url: `${BaseUrl}/api/repository/${repository}.git`,
+        })
+      },
+      async Deploy() {
+        return await git.push({
+          fs,
+          http,
+          onProgress: console.log,
+          onMessage: console.log,
+          onAuth: () => ({ username: credentials.email, password: credentials.password }),
+          onAuthSuccess: console.log,
+          onAuthFailure: console.log,
+          dir: process.cwd,
+          remote: "jekyo",
+          force: true,
+        })
       },
     }
   },

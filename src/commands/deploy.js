@@ -1,10 +1,15 @@
-const {Command, flags} = require('@oclif/command')
+const { Command, flags } = require("@oclif/command")
+const util = require("../util")
 
 class DeployCommand extends Command {
   async run() {
-    const {flags} = this.parse(DeployCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from /volumes/code/jekyo-cli/src/commands/deploy.js`)
+    const remote = await util.Git(this.config.dataDir).Remote()
+    if (!remote) {
+      this.error("No app present, use `jekyo link` to link and existing one or `jekyo create` to create one")
+    }
+  }
+  async catch(error) {
+    util.ErrorHandler(this.error, error)
   }
 }
 
@@ -14,7 +19,7 @@ Extra documentation goes here
 `
 
 DeployCommand.flags = {
-  name: flags.string({char: 'n', description: 'name to print'}),
+  name: flags.string({ char: "n", description: "name to print" }),
 }
 
 module.exports = DeployCommand
