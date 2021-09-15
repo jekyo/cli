@@ -148,18 +148,14 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3
 
 ## `jekyo link`
 
-Describe the command here
+Links an existing application
 
 ```
 USAGE
   $ jekyo link
 
 OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
+  -n, --name=name  Application name
 ```
 
 _See code: [src/commands/link.js](https://github.com/jekyo/cli/blob/v0.1.1/src/commands/link.js)_
