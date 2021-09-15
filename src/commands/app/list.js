@@ -6,8 +6,8 @@ const chalk = require("chalk")
 class ListCommand extends Command {
   async run() {
     const jekyoClient = util.Client(this.config.dataDir)
-    const services = await jekyoClient.ListServices()
-    cli.table(services.data, {
+    const applications = await jekyoClient.ApplicationList()
+    cli.table(applications.data, {
       Name: {
         minWidth: 5,
         get: (row) => chalk.cyanBright(row.name),
@@ -32,6 +32,6 @@ class ListCommand extends Command {
   }
 }
 
-ListCommand.description = "Lists all the services that a user has created on jekyo"
+ListCommand.description = "Lists all applications that a user has created on jekyo"
 
 module.exports = ListCommand

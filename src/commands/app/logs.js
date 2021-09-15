@@ -5,9 +5,9 @@ const util = require("../../util")
 class LogsCommand extends Command {
   async run() {
     const { flags } = this.parse(LogsCommand)
-    const name = flags.name || (await cli.prompt("Service name?"))
+    const name = flags.name || (await cli.prompt("Application name?"))
     const jekyoClient = util.Client(this.config.dataDir)
-    const result = await jekyoClient.LogsService(name)
+    const result = await jekyoClient.ApplicationLogs(name)
     console.log(result.data.data.logs)
   }
   async catch(error) {
@@ -15,10 +15,10 @@ class LogsCommand extends Command {
   }
 }
 
-LogsCommand.description = "Retrieves the logs for a service deployed on jekyo"
+LogsCommand.description = "Retrieves the logs for a application deployed on jekyo"
 
 LogsCommand.flags = {
-  name: flags.string({ char: "n", description: "jekyo service name" }),
+  name: flags.string({ char: "n", description: "jekyo application name" }),
 }
 
 module.exports = LogsCommand

@@ -6,9 +6,9 @@ const chalk = require("chalk")
 class StatusCommand extends Command {
   async run() {
     const { flags } = this.parse(StatusCommand)
-    const name = flags.name || (await cli.prompt("Service name?"))
+    const name = flags.name || (await cli.prompt("Application name?"))
     const jekyoClient = util.Client(this.config.dataDir)
-    const result = await jekyoClient.StatusService(name)
+    const result = await jekyoClient.ApplicationStatus(name)
 
     cli.table(result.data.data.pods, {
       Name: {
@@ -32,10 +32,10 @@ class StatusCommand extends Command {
   }
 }
 
-StatusCommand.description = "Retrieves the status of a jekyo service"
+StatusCommand.description = "Retrieves the status of a jekyo application"
 
 StatusCommand.flags = {
-  name: flags.string({ char: "n", description: "jekyo service name" }),
+  name: flags.string({ char: "n", description: "Application name" }),
 }
 
 module.exports = StatusCommand
