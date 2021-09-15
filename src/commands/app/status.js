@@ -22,6 +22,16 @@ class StatusCommand extends Command {
       QOS: {
         get: (row) => chalk.magenta(row.qos),
       },
+
+      Ready: {
+        get: (row) => (row.ready ? chalk.greenBright(row.ready) : chalk.redBright(row.ready)),
+      },
+      Started: {
+        get: (row) => (row.started ? chalk.greenBright(row.started) : chalk.redBright(row.started)),
+      },
+      Restarts: {
+        get: (row) => (row.restarts > 0 ? chalk.yellow(row.restarts) : chalk.cyanBright(row.restarts)),
+      },
       Date: {
         get: (row) => chalk.yellowBright(row.startTime),
       },
