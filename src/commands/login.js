@@ -9,6 +9,9 @@ class LoginCommand extends Command {
       await Login.run([])
     }
   }
+  async catch(error) {
+    util.ErrorHandler(this.error, error)
+  }
 }
 
 LoginCommand.description = "Sign in an existing jekyo user"

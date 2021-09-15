@@ -32,6 +32,9 @@ class LinkCommand extends Command {
       }
     }
   }
+  async catch(error) {
+    util.ErrorHandler(this.error, error)
+  }
 }
 
 LinkCommand.description = "Links an existing application"
