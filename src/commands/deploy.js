@@ -5,8 +5,9 @@ class DeployCommand extends Command {
   async run() {
     const remote = await util.Git(this.config.dataDir).Remote()
     if (!remote) {
-      this.error("No app present, use `jekyo link` to link and existing one or `jekyo create` to create one")
+      this.error("Application not found, use `jekyo link` to link and existing one or `jekyo create` to create one")
     }
+    await util.Git(this.config.dataDir).Deploy()
   }
   async catch(error) {
     util.ErrorHandler(this.error, error)

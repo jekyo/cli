@@ -1,9 +1,12 @@
 const axios = require("axios").default
 const JSONStore = require("json-store")
 const git = require("isomorphic-git")
-const githttp = require("isomorphic-git/http/node")
+const http = require("isomorphic-git/http/node")
 const fs = require("fs")
 const BaseUrl = "http://localhost:8000"
+const cli = require("cli-ux").cli
+const chalk = require("chalk")
+
 module.exports = {
   ErrorHandler(logger, err) {
     if (err.response) {
@@ -29,10 +32,22 @@ module.exports = {
           logger(`unhandled status ${err.response.status}, ${JSON.stringify(err.response.data)}`)
       }
     } else {
-      logger(err)
+      if (err.caller === "git.push") {
+        switch (err.data.statusCode) {
+          case 404:
+            logger("Application not found, use `jekyo link` to link and existing one or `jekyo create` to create one")
+            break
+
+          default:
+            logger(`please handle: status:${err.data.statusCode}, message:${err.message}`)
+            break
+        }
+        logger("Session expired: please signin !")
+      } else {
+        logger("not handled", err)
+      }
     }
   },
-
   Client(config) {
     if (!fs.existsSync(config)) {
       fs.mkdirSync(config, { recursive: true })
@@ -66,20 +81,20 @@ module.exports = {
       async ChangePassword(request) {
         return await axios.post("/api/user/changePassword", request)
       },
-      async CreateService(name) {
-        return await axios.post(`/api/service/${user.username}/create`, { name })
+      async ApplicationCreate(name) {
+        return await axios.post(`/api/application/${user.username}/create`, { name })
       },
-      async DeleteService(name) {
-        return await axios.post(`/api/service/${user.username}/delete`, { name })
+      async ApplicationDelete(name) {
+        return await axios.post(`/api/application/${user.username}/delete`, { name })
       },
-      async ListServices() {
-        return await axios.get(`/api/service/${user.username}/list`)
+      async ApplicationList() {
+        return await axios.get(`/api/application/${user.username}/list`)
       },
-      async LogsService(service) {
-        return await axios.get(`/api/service/${user.username}/${service}/logs`)
+      async ApplicationLogs(service) {
+        return await axios.get(`/api/application/${user.username}/${service}/logs`)
       },
-      async StatusService(service) {
-        return await axios.get(`/api/service/${user.username}/${service}/status`)
+      async ApplicationStatus(service) {
+        return await axios.get(`/api/application/${user.username}/${service}/status`)
       },
     }
   },
@@ -100,18 +115,23 @@ module.exports = {
         })
       },
       async Deploy() {
-        return await git.push({
+        await git.push({
           fs,
           http,
-          onProgress: console.log,
-          onMessage: console.log,
+          onProgress: () => {
+            console.log("progress")
+          },
+          onMessage: (message) => {
+            cli.action.stop(chalk.greenBright("OK"))
+            cli.action.start(`${chalk.cyanBright("➜ ")} ${chalk.gray(message.replace(/\r?\n|\r/, " "))}`)
+          },
           onAuth: () => ({ username: credentials.email, password: credentials.password }),
-          onAuthSuccess: console.log,
-          onAuthFailure: console.log,
-          dir: process.cwd,
+          dir: process.cwd(),
           remote: "jekyo",
           force: true,
+          remoteRef: "master",
         })
+        cli.action.stop(chalk.greenBright("OK"))
       },
     }
   },
