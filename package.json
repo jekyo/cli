@@ -1,7 +1,7 @@
 {
   "name": "jekyo",
   "description": "JEKYO | Decentralized application platform",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Vali Malinoiu @0x4139",
   "bin": {
     "jekyo": "./bin/run"
