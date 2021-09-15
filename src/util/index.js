@@ -101,6 +101,7 @@ module.exports = {
   Git(config) {
     const configStore = JSONStore(`${config}/config.json`)
     const credentials = configStore.get("credentials")
+    const user = configStore.get("user")
     return {
       async Remote() {
         let remotes = await git.listRemotes({ fs, dir: process.cwd() })
@@ -110,8 +111,9 @@ module.exports = {
         return await git.addRemote({
           fs,
           dir: process.cwd(),
+          force: true,
           remote: "jekyo",
-          url: `${BaseUrl}/api/repository/${repository}.git`,
+          url: `${BaseUrl}/api/repository/${user.username}/${repository}.git`,
         })
       },
       async Deploy() {

@@ -35,6 +35,7 @@ USAGE
 * [`jekyo app:status`](#jekyo-appstatus)
 * [`jekyo deploy`](#jekyo-deploy)
 * [`jekyo help [COMMAND]`](#jekyo-help-command)
+* [`jekyo link`](#jekyo-link)
 * [`jekyo login`](#jekyo-login)
 * [`jekyo logs`](#jekyo-logs)
 * [`jekyo status`](#jekyo-status)
@@ -144,6 +145,24 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3/src/commands/help.ts)_
+
+## `jekyo link`
+
+Describe the command here
+
+```
+USAGE
+  $ jekyo link
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/link.js](https://github.com/jekyo/cli/blob/v0.1.1/src/commands/link.js)_
 
 ## `jekyo login`
 
