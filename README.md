@@ -19,7 +19,7 @@ $ npm install -g jekyo
 $ jekyo COMMAND
 running command...
 $ jekyo (-v|--version|version)
-jekyo/0.0.22 linux-x64 node-v14.17.5
+jekyo/0.1.0 linux-x64 node-v14.17.5
 $ jekyo --help [COMMAND]
 USAGE
   $ jekyo COMMAND
@@ -28,20 +28,87 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`jekyo app:create`](#jekyo-appcreate)
+* [`jekyo app:delete`](#jekyo-appdelete)
+* [`jekyo app:list`](#jekyo-applist)
+* [`jekyo app:logs`](#jekyo-applogs)
+* [`jekyo app:status`](#jekyo-appstatus)
 * [`jekyo deploy`](#jekyo-deploy)
 * [`jekyo help [COMMAND]`](#jekyo-help-command)
 * [`jekyo login`](#jekyo-login)
 * [`jekyo logs`](#jekyo-logs)
-* [`jekyo service:create`](#jekyo-servicecreate)
-* [`jekyo service:delete`](#jekyo-servicedelete)
-* [`jekyo service:list`](#jekyo-servicelist)
-* [`jekyo service:logs`](#jekyo-servicelogs)
-* [`jekyo service:status`](#jekyo-servicestatus)
 * [`jekyo status`](#jekyo-status)
 * [`jekyo user:confirm`](#jekyo-userconfirm)
 * [`jekyo user:recover`](#jekyo-userrecover)
 * [`jekyo user:signin`](#jekyo-usersignin)
 * [`jekyo user:signup`](#jekyo-usersignup)
+
+## `jekyo app:create`
+
+Creates a new application that can be deployed on jekyo
+
+```
+USAGE
+  $ jekyo app:create
+
+OPTIONS
+  -n, --name=name  Application name
+```
+
+_See code: [src/commands/app/create.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/app/create.js)_
+
+## `jekyo app:delete`
+
+Deletes an existing application deployed on jekyo
+
+```
+USAGE
+  $ jekyo app:delete
+
+OPTIONS
+  -n, --name=name  Application name
+```
+
+_See code: [src/commands/app/delete.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/app/delete.js)_
+
+## `jekyo app:list`
+
+Lists all applications that a user has created on jekyo
+
+```
+USAGE
+  $ jekyo app:list
+```
+
+_See code: [src/commands/app/list.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/app/list.js)_
+
+## `jekyo app:logs`
+
+Retrieves the logs for a application deployed on jekyo
+
+```
+USAGE
+  $ jekyo app:logs
+
+OPTIONS
+  -n, --name=name  jekyo application name
+```
+
+_See code: [src/commands/app/logs.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/app/logs.js)_
+
+## `jekyo app:status`
+
+Retrieves the status of a jekyo application
+
+```
+USAGE
+  $ jekyo app:status
+
+OPTIONS
+  -n, --name=name  Application name
+```
+
+_See code: [src/commands/app/status.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/app/status.js)_
 
 ## `jekyo deploy`
 
@@ -59,7 +126,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/deploy.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/deploy.js)_
+_See code: [src/commands/deploy.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/deploy.js)_
 
 ## `jekyo help [COMMAND]`
 
@@ -91,7 +158,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/login.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/login.js)_
+_See code: [src/commands/login.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/login.js)_
 
 ## `jekyo logs`
 
@@ -109,74 +176,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/logs.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/logs.js)_
-
-## `jekyo service:create`
-
-Creates a new service that can be deployed on jekyo
-
-```
-USAGE
-  $ jekyo service:create
-
-OPTIONS
-  -n, --name=name  jekyo service name
-```
-
-_See code: [src/commands/service/create.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/service/create.js)_
-
-## `jekyo service:delete`
-
-Deletes an existing service deployed on jekyo
-
-```
-USAGE
-  $ jekyo service:delete
-
-OPTIONS
-  -n, --name=name  jekyo service name
-```
-
-_See code: [src/commands/service/delete.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/service/delete.js)_
-
-## `jekyo service:list`
-
-Lists all the services that a user has created on jekyo
-
-```
-USAGE
-  $ jekyo service:list
-```
-
-_See code: [src/commands/service/list.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/service/list.js)_
-
-## `jekyo service:logs`
-
-Retrieves the logs for a service deployed on jekyo
-
-```
-USAGE
-  $ jekyo service:logs
-
-OPTIONS
-  -n, --name=name  jekyo service name
-```
-
-_See code: [src/commands/service/logs.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/service/logs.js)_
-
-## `jekyo service:status`
-
-Retrieves the status of a jekyo service
-
-```
-USAGE
-  $ jekyo service:status
-
-OPTIONS
-  -n, --name=name  jekyo service name
-```
-
-_See code: [src/commands/service/status.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/service/status.js)_
+_See code: [src/commands/logs.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/logs.js)_
 
 ## `jekyo status`
 
@@ -194,7 +194,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/status.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/status.js)_
+_See code: [src/commands/status.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/status.js)_
 
 ## `jekyo user:confirm`
 
@@ -208,7 +208,7 @@ OPTIONS
   -t, --token=token  Account confirmation token
 ```
 
-_See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/user/confirm.js)_
+_See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/user/confirm.js)_
 
 ## `jekyo user:recover`
 
@@ -222,7 +222,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/user/recover.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/user/recover.js)_
+_See code: [src/commands/user/recover.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/user/recover.js)_
 
 ## `jekyo user:signin`
 
@@ -237,7 +237,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/user/signin.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/user/signin.js)_
+_See code: [src/commands/user/signin.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/user/signin.js)_
 
 ## `jekyo user:signup`
 
@@ -254,5 +254,5 @@ OPTIONS
   -u, --username=username  your desired username
 ```
 
-_See code: [src/commands/user/signup.js](https://github.com/jekyo/cli/blob/v0.0.22/src/commands/user/signup.js)_
+_See code: [src/commands/user/signup.js](https://github.com/jekyo/cli/blob/v0.1.0/src/commands/user/signup.js)_
 <!-- commandsstop -->
