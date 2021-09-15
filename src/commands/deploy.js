@@ -14,10 +14,7 @@ class DeployCommand extends Command {
   }
 }
 
-DeployCommand.description = `Describe the command here
-...
-Extra documentation goes here
-`
+DeployCommand.description = "Deploys the current application"
 
 DeployCommand.flags = {
   name: flags.string({ char: "n", description: "name to print" }),
