@@ -1,6 +1,5 @@
 const { Command, flags } = require("@oclif/command")
 const util = require("../util")
-const cli = require("cli-ux").cli
 const inquirer = require("inquirer")
 const chalk = require("chalk")
 
@@ -9,7 +8,7 @@ class LinkCommand extends Command {
     const { flags } = this.parse(LinkCommand)
     const jekyoClient = util.Client(this.config.dataDir)
     if (!flags.name) {
-      const apps = (await jekyoClient.ApplicationList()).data.map((app) => {
+      const apps = (await jekyoClient.ApplicationEnumerate()).data.map((app) => {
         return { name: app.name }
       })
       if (apps.length > 0) {

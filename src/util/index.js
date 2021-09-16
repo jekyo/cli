@@ -3,7 +3,7 @@ const JSONStore = require("json-store")
 const git = require("isomorphic-git")
 const http = require("isomorphic-git/http/node")
 const fs = require("fs")
-const BaseUrl = "http://localhost:8000"
+const BaseUrl = "https://jekyo.com"
 const cli = require("cli-ux").cli
 const chalk = require("chalk")
 
@@ -44,7 +44,7 @@ module.exports = {
         }
         logger("Session expired: please signin !")
       } else {
-        logger("not handled", err)
+        logger(`not handled ${err}`)
       }
     }
   },
@@ -89,6 +89,9 @@ module.exports = {
       },
       async ApplicationList() {
         return await axios.get(`/api/application/${user.username}/list`)
+      },
+      async ApplicationEnumerate() {
+        return await axios.get(`/api/application/${user.username}/enumerate`)
       },
       async ApplicationLogs(service) {
         return await axios.get(`/api/application/${user.username}/${service}/logs`)
