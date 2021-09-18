@@ -2,14 +2,31 @@ const { Command, flags } = require("@oclif/command")
 const util = require("../../util")
 const cli = require("cli-ux").cli
 const chalk = require("chalk")
+const inquirer = require("inquirer")
 
 class StatusCommand extends Command {
   async run() {
     const { flags } = this.parse(StatusCommand)
-    const name = flags.name || (await cli.prompt("Application name?"))
     const jekyoClient = util.Client(this.config.dataDir)
-    const result = await jekyoClient.ApplicationStatus(name)
-
+    if (!flags.name) {
+      const apps = (await jekyoClient.ApplicationEnumerate()).data.map((app) => {
+        return { name: app.name }
+      })
+      if (apps.length > 0) {
+        const response = await inquirer.prompt([
+          {
+            name: "application",
+            message: "Select application",
+            type: "list",
+            choices: apps,
+          },
+        ])
+        flags.name = response.application
+      } else {
+        this.error("No applications found, use `jekyo create` to create one")
+      }
+    }
+    const result = await jekyoClient.ApplicationStatus(flags.name)
     cli.table(result.data.data.pods, {
       Name: {
         minWidth: 5,
