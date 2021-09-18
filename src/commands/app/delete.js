@@ -1,12 +1,29 @@
 const { Command, flags } = require("@oclif/command")
 const util = require("../../util")
-const cli = require("cli-ux").cli
+const inquirer = require("inquirer")
 class DeleteCommand extends Command {
   async run() {
     const { flags } = this.parse(DeleteCommand)
-    const name = flags.name || (await cli.prompt("Application name?"))
     const jekyoClient = util.Client(this.config.dataDir)
-    const result = await jekyoClient.ApplicationDelete(name)
+    if (!flags.name) {
+      const apps = (await jekyoClient.ApplicationEnumerate()).data.map((app) => {
+        return { name: app.name }
+      })
+      if (apps.length > 0) {
+        const response = await inquirer.prompt([
+          {
+            name: "application",
+            message: "Select application",
+            type: "list",
+            choices: apps,
+          },
+        ])
+        flags.name = response.application
+      } else {
+        this.error("No applications found, use `jekyo create` to create one")
+      }
+    }
+    const result = await jekyoClient.ApplicationDelete(flags.name)
     console.log(result.data.message)
   }
   async catch(error) {
