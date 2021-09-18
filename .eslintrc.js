@@ -11,7 +11,7 @@ module.exports = {
     sourceType: "module",
     ecmaVersion: "2018",
   },
-  extends: ["prettier"],
+  extends: ["prettier", "eslint:recommended"],
   plugins: [],
 
   // add your custom rules here

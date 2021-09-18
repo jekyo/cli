@@ -27,10 +27,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@oclif/dev-cli": "^1.26.0",
     "eslint": "^7.29.0",
-    "eslint-config-oclif": "^3.1.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.12.1",
     "globby": "^10.0.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
@@ -74,6 +71,8 @@
     "prepack": "oclif-dev manifest && oclif-dev readme",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:js": "eslint --ext \".js\" --ignore-path .gitignore .",
+    "lint": "npm run lint:js"
   }
 }

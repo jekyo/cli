@@ -1,5 +1,7 @@
 const { Command, flags } = require("@oclif/command")
 const Login = require("./user/signin")
+const util = require("../util")
+
 class LoginCommand extends Command {
   async run() {
     const { flags } = this.parse(LoginCommand)
