@@ -28,8 +28,11 @@ module.exports = {
         case 503:
           logger(`${err.response.data.message}, please try again later`)
           break
+        case 413:
+          logger("The data you are trying to send is too big")
+          break
         default:
-          logger(`unhandled status ${err.response.status}, ${JSON.stringify(err.response.data)}`)
+          logger(`please handle ${err.response.status}, ${JSON.stringify(err.response.data)}`)
       }
     } else {
       if (err.caller === "git.push") {
@@ -44,7 +47,7 @@ module.exports = {
         }
         logger("Session expired: please signin !")
       } else {
-        logger(`not handled ${err}`)
+        logger(`${err}`)
       }
     }
   },
@@ -137,6 +140,25 @@ module.exports = {
           remoteRef: "master",
         })
         cli.action.stop(chalk.greenBright("OK"))
+      },
+      async Clone(repository, dir) {
+        cli.action.start(chalk.gray("Cloning source code"))
+        await git.clone({
+          fs,
+          http,
+          dir: dir,
+          url: repository,
+          singleBranch: true,
+        })
+        cli.action.stop(chalk.greenBright("OK"))
+      },
+    }
+  },
+  Github() {
+    delete axios.defaults.headers.common["Authorization"]
+    return {
+      async GettingStartedTemplates() {
+        return await axios.get("https://api.github.com/users/jekyo/repos")
       },
     }
   },

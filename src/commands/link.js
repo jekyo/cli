@@ -20,16 +20,13 @@ class LinkCommand extends Command {
             choices: apps,
           },
         ])
-        await util.Git(this.config.dataDir).CreateRemote(response.application)
-        this.log(
-          `Application ${chalk.cyanBright(response.application)} linked, use ${chalk.greenBright(
-            "jekyo deploy"
-          )} to deploy`
-        )
+        flags.name = response.application
       } else {
         this.error("No applications found, use `jekyo create` to create one")
       }
     }
+    await util.Git(this.config.dataDir).CreateRemote(flags.name)
+    this.log(`Application ${chalk.cyanBright(flags.name)} linked, use ${chalk.greenBright("jekyo deploy")} to deploy`)
   }
   async catch(error) {
     util.ErrorHandler(this.error, error)
