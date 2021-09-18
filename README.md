@@ -19,7 +19,7 @@ $ npm install -g jekyo
 $ jekyo COMMAND
 running command...
 $ jekyo (-v|--version|version)
-jekyo/0.5.0 linux-x64 node-v14.17.5
+jekyo/0.5.1 linux-x64 node-v14.17.5
 $ jekyo --help [COMMAND]
 USAGE
   $ jekyo COMMAND
@@ -57,7 +57,7 @@ OPTIONS
   -t, --template=template  Template name, use none for no template
 ```
 
-_See code: [src/commands/app/create.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/app/create.js)_
+_See code: [src/commands/app/create.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/app/create.js)_
 
 ## `jekyo app:delete`
 
@@ -71,7 +71,7 @@ OPTIONS
   -n, --name=name  Application name
 ```
 
-_See code: [src/commands/app/delete.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/app/delete.js)_
+_See code: [src/commands/app/delete.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/app/delete.js)_
 
 ## `jekyo app:list`
 
@@ -82,7 +82,7 @@ USAGE
   $ jekyo app:list
 ```
 
-_See code: [src/commands/app/list.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/app/list.js)_
+_See code: [src/commands/app/list.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/app/list.js)_
 
 ## `jekyo app:logs`
 
@@ -96,7 +96,7 @@ OPTIONS
   -n, --name=name  jekyo application name
 ```
 
-_See code: [src/commands/app/logs.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/app/logs.js)_
+_See code: [src/commands/app/logs.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/app/logs.js)_
 
 ## `jekyo app:status`
 
@@ -110,7 +110,7 @@ OPTIONS
   -n, --name=name  Application name
 ```
 
-_See code: [src/commands/app/status.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/app/status.js)_
+_See code: [src/commands/app/status.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/app/status.js)_
 
 ## `jekyo deploy`
 
@@ -124,7 +124,7 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/deploy.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/deploy.js)_
+_See code: [src/commands/deploy.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/deploy.js)_
 
 ## `jekyo help [COMMAND]`
 
@@ -155,7 +155,7 @@ OPTIONS
   -n, --name=name  Application name
 ```
 
-_See code: [src/commands/link.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/link.js)_
+_See code: [src/commands/link.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/link.js)_
 
 ## `jekyo login`
 
@@ -170,7 +170,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/login.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/login.js)_
+_See code: [src/commands/login.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/login.js)_
 
 ## `jekyo logs`
 
@@ -184,7 +184,7 @@ OPTIONS
   -n, --name=name  jekyo application name
 ```
 
-_See code: [src/commands/logs.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/logs.js)_
+_See code: [src/commands/logs.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/logs.js)_
 
 ## `jekyo status`
 
@@ -198,7 +198,7 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/status.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/status.js)_
+_See code: [src/commands/status.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/status.js)_
 
 ## `jekyo user:confirm`
 
@@ -212,7 +212,7 @@ OPTIONS
   -t, --token=token  Account confirmation token
 ```
 
-_See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/user/confirm.js)_
+_See code: [src/commands/user/confirm.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/user/confirm.js)_
 
 ## `jekyo user:recover`
 
@@ -226,7 +226,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/user/recover.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/user/recover.js)_
+_See code: [src/commands/user/recover.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/user/recover.js)_
 
 ## `jekyo user:signin`
 
@@ -241,7 +241,7 @@ OPTIONS
   -p, --password=password  jekyo account password
 ```
 
-_See code: [src/commands/user/signin.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/user/signin.js)_
+_See code: [src/commands/user/signin.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/user/signin.js)_
 
 ## `jekyo user:signup`
 
@@ -258,5 +258,5 @@ OPTIONS
   -u, --username=username  your desired username
 ```
 
-_See code: [src/commands/user/signup.js](https://github.com/jekyo/cli/blob/v0.5.0/src/commands/user/signup.js)_
+_See code: [src/commands/user/signup.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/user/signup.js)_
 <!-- commandsstop -->
