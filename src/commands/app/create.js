@@ -24,6 +24,7 @@ class CreateCommand extends Command {
       choices.unshift({
         name: `None ${chalk.gray("Creates only the application")}`,
         description: "No template",
+        value: "none",
       })
 
       response = await inquirer.prompt([
@@ -36,7 +37,7 @@ class CreateCommand extends Command {
       ])
     }
     const name = flags.name || (await cli.prompt("Application name?"))
-    if (response && response.template) {
+    if (response && response.template && response.template !== "none") {
       const dirName = path.join(process.cwd(), name)
       if (!fs.existsSync(dirName)) {
         await util.Git(this.config.dataDir).Clone(response.template, dirName)

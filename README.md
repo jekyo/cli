@@ -33,6 +33,7 @@ USAGE
 * [`jekyo app:list`](#jekyo-applist)
 * [`jekyo app:logs`](#jekyo-applogs)
 * [`jekyo app:status`](#jekyo-appstatus)
+* [`jekyo create`](#jekyo-create)
 * [`jekyo deploy`](#jekyo-deploy)
 * [`jekyo help [COMMAND]`](#jekyo-help-command)
 * [`jekyo link`](#jekyo-link)
@@ -111,6 +112,24 @@ OPTIONS
 ```
 
 _See code: [src/commands/app/status.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/app/status.js)_
+
+## `jekyo create`
+
+Describe the command here
+
+```
+USAGE
+  $ jekyo create
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/create.js](https://github.com/jekyo/cli/blob/v0.5.1/src/commands/create.js)_
 
 ## `jekyo deploy`
 
